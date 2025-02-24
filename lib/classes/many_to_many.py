@@ -69,8 +69,8 @@ class Magazine:
     @name.setter
     def name(self, value):
         if not isinstance(value, str) or not (2 <= len(value) <= 16):
-            self._name = self._name  
-            self._name = value
+            raise Exception("Name must be a string between 2 and 16 characters")
+        self._name = value
     
     @property
     def category(self):
@@ -79,8 +79,8 @@ class Magazine:
     @category.setter
     def category(self, value):
         if not isinstance(value, str) or len(value) == 0:
-            self._category = self._category  
-            self._category = value
+            raise Exception("Category must be a non-empty string")
+        self._category = value
     
     def articles(self):
         return [article for article in Article.all if article.magazine == self]
